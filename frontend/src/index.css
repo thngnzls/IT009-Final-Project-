@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&family=Inter:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,11 +25,6 @@ a.active hr {
 @media (max-width:640px) {
   a.active {
     background-color: black;
-    color: white;
+    color: #F9FAFB;
   }
-}
-
-body {
-  @apply bg-gray-50;           
-  font-family: 'Inter', sans-serif; 
 }
