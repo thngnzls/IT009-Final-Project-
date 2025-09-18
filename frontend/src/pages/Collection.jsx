@@ -94,24 +94,25 @@ const Collection = () => {
         <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? '' : 'hidden'} sm:block`}>
           <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-            <p className='flex gap-2'><input className='w-3' value={"Men"} onChange={toggleCategory} type="checkbox" /> Men's Formal Wear </p>
-            <p className='flex gap-2'><input className='w-3' value={"Women"} onChange={toggleCategory} type="checkbox" /> Women's Formal Wear </p>
-            <p className='flex gap-2'><input className='w-3' value={"Business"} onChange={toggleCategory} type="checkbox" /> Business Attire </p>
-            <p className='flex gap-2'><input className='w-3' value={"Traditional"} onChange={toggleCategory} type="checkbox" /> Traditional Wear </p>
-            <p className='flex gap-2'><input className='w-3' value={"Special"} onChange={toggleCategory} type="checkbox" /> Special Occassion </p>
+            <p className='flex gap-2'><input className='w-3' value={"Equipment"} onChange={toggleCategory} type="checkbox" /> Medical Equipment </p>
+            <p className='flex gap-2'><input className='w-3' value={"Consumables"} onChange={toggleCategory} type="checkbox" />Medical Consumables</p>
+            <p className='flex gap-2'><input className='w-3' value={"Peripherals"} onChange={toggleCategory} type="checkbox" />Health & Wellness Peripherals</p>
           </div>
         </div>
 
         {/* Sub Category Filter */}
         <div className={`border border-gray-300 pl-5 py-3 my-5 ${showFilter ? '' : 'hidden'} sm:block`}>
-          <p className='mb-3 text-sm font-medium'>TYPE</p>
+          <p className='mb-3 text-sm font-medium'>Sub Category</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-            <p className='flex gap-2'><input className='w-3' value={"Topwear"} onChange={toggleSubCategory} type="checkbox" /> Topwear </p>
-            <p className='flex gap-2'><input className='w-3' value={"Bottomwear"} onChange={toggleSubCategory} type="checkbox" /> Bottomwear </p>
-            <p className='flex gap-2'><input className='w-3' value={"Tuxedo"} onChange={toggleSubCategory} type="checkbox" /> Tuxedo </p>
-            <p className='flex gap-2'><input className='w-3' value={"Dress"} onChange={toggleSubCategory} type="checkbox" /> Dress </p>
-            <p className='flex gap-2'><input className='w-3' value={"Footwear"} onChange={toggleSubCategory} type="checkbox" /> Footwear </p>
-            <p className='flex gap-2'><input className='w-3' value={"Accessories"} onChange={toggleSubCategory} type="checkbox" /> Accessories </p>
+            <p className='flex gap-2'><input className='w-3' value={"Diagnostic Tools"} onChange={toggleSubCategory} type="checkbox" /> Diagnostic Tools </p>
+            <p className='flex gap-2'><input className='w-3' value={"Mobility Aids"} onChange={toggleSubCategory} type="checkbox" /> Mobility Aids </p>
+            <p className='flex gap-2'><input className='w-3' value={"Home Monitoring Devices"} onChange={toggleSubCategory} type="checkbox" /> Home Monitoring Devices </p>
+            <p className='flex gap-2'><input className='w-3' value={"Personal Protective Equipment"} onChange={toggleSubCategory} type="checkbox" /> Personal Protective Equipment </p>
+            <p className='flex gap-2'><input className='w-3' value={"Wound Care Supplies"} onChange={toggleSubCategory} type="checkbox" /> Wound Care Supplies </p>
+            <p className='flex gap-2'><input className='w-3' value={"Injection & IV Supplies"} onChange={toggleSubCategory} type="checkbox" /> Injection & IV Supplies </p>
+            <p className='flex gap-2'><input className='w-3' value={"Respiratory Care"} onChange={toggleSubCategory} type="checkbox" /> Respiratory Care </p>
+            <p className='flex gap-2'><input className='w-3' value={"Diabetic Care"} onChange={toggleSubCategory} type="checkbox" /> Diabetic Care </p>
+            <p className='flex gap-2'><input className='w-3' value={"Physical Therapy Tools"} onChange={toggleSubCategory} type="checkbox" /> Physical Therapy Tools </p>
 
           </div>
 
@@ -122,10 +123,10 @@ const Collection = () => {
       <div className='flex-1'>
 
         <div className='flex justify-between text-base sm:text-2xl mb-4'>
-            <Title text1={'ALL'} text2={'COLLECTIONS'} />
+            <Title text1={'ALL'} text2={'PRODUCTS'} />
             {/* Porduct Sort */}
             <select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
-              <option value="relavent">Sort by: Relavent</option>
+              <option value="relevant">Sort by: Relevant</option>
               <option value="low-high">Sort by: Low to High</option>
               <option value="high-low">Sort by: High to Low</option>
             </select>

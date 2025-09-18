@@ -160,9 +160,7 @@ const Add = ({ token }) => {
             <option value="Diagnostic Tools">Diagnostic Tools</option>
             <option value="Mobility Aids">Mobility Aids</option>
             <option value="Home Monitoring Devices">Home Monitoring Devices</option>
-            <option value="Personal Protective Equipment">
-              Personal Protective Equipment (PPE)
-            </option>
+            <option value="Personal Protective Equipment">Personal Protective Equipment (PPE)</option>
             <option value="Wound Care Supplies">Wound Care Supplies</option>
             <option value="Injection & IV Supplies">Injection & IV Supplies</option>
             <option value="Respiratory Care">Respiratory Care</option>
