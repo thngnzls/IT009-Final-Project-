@@ -19,8 +19,8 @@ const LatestCollection = () => {
     return (
         <div className='my-10'>
             <div className='text-center py-8 text-3xl'>
-                <Title text1={"LATEST"} text2={"COLLECTIONS"} />
-                <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>Discover our latest collections featuring unique styles and eco-friendly designs. Shop now for fresh arrivals that blend fashion with sustainability!</p>
+                <Title text1={"LATEST"} text2={"MEDICAL ESSENTIALS"} />
+                <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>Discover the newest medical equipment and daily clinical essentials delivered right to your door.</p>
             </div>
 
             {/* Rendering Products */}
