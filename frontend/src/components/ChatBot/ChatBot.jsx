@@ -4,6 +4,11 @@ import { FaRobot, FaTimes, FaPaperPlane } from 'react-icons/fa';
 import './ChatBot.css';
 import GEMINI_API_KEY from '../../config/gemini.js';
 
+// Initialize the Generative AI with api version
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY, {
+    apiVersion: 'v1'  // Use the stable v1 API endpoint
+});
+
 const ChatBot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
@@ -15,9 +20,22 @@ const ChatBot = () => {
     const [inputMessage, setInputMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef(null);
-    
-    // Initialize Gemini AI
-    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+
+    const generateResponse = async (userPrompt) => {
+        try {
+            // Initialize model with basic configuration
+            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+            
+            const prompt = `As a helpful shopping assistant for this e-commerce website, ${userPrompt}`;
+            const result = await model.generateContent(prompt);
+            
+            const response = await result.response;
+            return response.text();
+        } catch (error) {
+            console.error('Detailed error:', error);
+            throw error;
+        }
+    };
     
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -41,11 +59,9 @@ const ChatBot = () => {
         setIsLoading(true);
 
         try {
-            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-            const result = await model.generateContent(inputMessage);
-            const response = await result.response;
+            const responseText = await generateResponse(inputMessage);
             const botMessage = {
-                text: response.text(),
+                text: responseText,
                 sender: 'bot'
             };
             
@@ -54,11 +70,18 @@ const ChatBot = () => {
             console.error('Error:', error);
             let errorMessage = 'Sorry, I encountered an error. Please try again.';
             
+            console.error('Full error details:', error);
+            
             if (error.message.includes('API key')) {
                 errorMessage = 'Error: Invalid API key. Please check your API key configuration.';
+            } else if (error.message.includes('not found')) {
+                errorMessage = 'Error: Model not available. Please try again later.';
             } else if (error.message.includes('network')) {
                 errorMessage = 'Network error. Please check your internet connection.';
+            } else {
+                errorMessage = error.message;
             }
+            console.error('Full error:', error);
             
             setMessages(prev => [...prev, {
                 text: errorMessage,

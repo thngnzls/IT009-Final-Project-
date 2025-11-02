@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-ai/generativelanguage": "^3.5.0",
+    "@google-cloud/aiplatform": "^5.12.0",
+    "@google-cloud/vertexai": "^1.10.0",
     "@google/generative-ai": "^0.24.1",
     "axios": "^1.7.4",
     "react": "^18.3.1",
