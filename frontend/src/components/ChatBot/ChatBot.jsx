@@ -51,7 +51,7 @@ const handleSendMessage = async (e) => {
     const botMessage = {
       text: responseText,
       sender: 'bot',
-      isMarkdown: true // optional
+      isMarkdown: true
     };
 
     setMessages(prev => [...prev, botMessage]);
