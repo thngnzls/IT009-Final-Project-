@@ -1,20 +1,32 @@
 import jwt from 'jsonwebtoken'
+import userModel from '../models/userModel.js' // Assuming you need to fetch the user
 
-const adminAuth = async (req,res,next) => {
+const adminAuth = async (req, res, next) => {
     try {
-        const { token } = req.headers
+        // 1. Get the token (assuming it's in the headers)
+        const token = req.headers.token;
         if (!token) {
-            return res.json({success:false,message:"Not Authorized Login Again"})
+            return res.status(401).json({ success: false, message: "Not Authorized, Token Missing." });
         }
-        const token_decode = jwt.verify(token,process.env.JWT_SECRET);
-        if (token_decode !== process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD) {
-            return res.json({success:false,message:"Not Authorized Login Again"})
+
+        // 2. Verify the token signature and decode the payload (user ID)
+        const token_decode = jwt.verify(token, process.env.JWT_SECRET);
+        
+        // 3. Fetch the user from the database
+        const user = await userModel.findById(token_decode.id); 
+
+        // 4. CRITICAL CHECK: Verify the user role
+        if (!user || user.role !== "admin") {
+            return res.status(403).json({ success: false, message: "Not an admin." });
         }
-        next()
+        
+        // 5. Attach the user object to the request and proceed
+        req.user = user; 
+        next();
     } catch (error) {
-        console.log(error)
-        res.json({ success: false, message: error.message })
+        console.log(error);
+        return res.status(401).json({ success: false, message: "Authentication failed. Please log in again." });
     }
 }
 
-export default adminAuth
+export default adminAuth;
