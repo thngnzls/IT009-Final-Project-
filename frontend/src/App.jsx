@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Collection from './pages/Collection'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import ChatBot from './components/ChatBot/ChatBot'
 import Product from './pages/Product'
 import Cart from './pages/Cart'
 import Login from './pages/Login'
@@ -39,6 +40,7 @@ const App = () => {
         <Route path='/profile' element={<Profile />} /> 
       </Routes>
       <Footer />
+      <ChatBot />
     </div>
   )
 }
